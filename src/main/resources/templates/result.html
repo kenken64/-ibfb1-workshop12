@@ -9,7 +9,7 @@
 <body>
     <h1>Your list of <span th:text="${numberRandomNum}"></span> random numbers</h1>
     <ul th:each="numberImg : ${randNumResult}">
-        <li th:text="${numberImg}"></li>
+        <li data-th-text="${numberImg}"></li>
         <img th:src="@{${'/images/' + numberImg}}" width="300" height="300"/>
     </ul>
 </body>

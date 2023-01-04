@@ -11,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import sg.edu.nus.iss.app.workshop12.exception.RandNoException;
 import sg.edu.nus.iss.app.workshop12.models.Generate;
@@ -33,6 +35,18 @@ public class GenRandNoController {
         // associate the bind var to the view/page
         model.addAttribute("generateObj", g);
         return "generate";
+    }
+
+    @GetMapping(path="/generate")
+    public String generateRandNumByGet(@RequestParam Integer numberVal, Model model){
+        this.randomizeNum(model, numberVal.intValue());
+        return "result";
+    }
+
+    @GetMapping(path="/generate/{numberVal}")
+    public String generateRandNumByGetPV(@PathVariable Integer numberVal, Model model){
+        this.randomizeNum(model, numberVal.intValue());
+        return "result";
     }
 
     @PostMapping(path="/generate")
