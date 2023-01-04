@@ -43,16 +43,16 @@ public class GenRandNoController {
 
     private void randomizeNum(Model model, int noOfGenerateNo){
         int maxGenNo = 30;
-        String[] imgNumbers = new String[maxGenNo];
+        String[] imgNumbers = new String[maxGenNo+1];
 
         // Validate only accept gt 0 lte 30
-        if(noOfGenerateNo < 1 || noOfGenerateNo > 30){
+        if(noOfGenerateNo < 1 || noOfGenerateNo > maxGenNo){
             throw new RandNoException();
         }
 
         // generate all the number images store it 
         // to the imgNumbers array 
-        for(int i =0 ; i < maxGenNo; i++){
+        for(int i =0 ; i < maxGenNo+1; i++){
             imgNumbers[i] = "number" + i + ".jpg";
         }
 
